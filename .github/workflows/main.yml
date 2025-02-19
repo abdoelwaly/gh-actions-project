@@ -1,8 +1,14 @@
-name: gh actions test
+name: gh Actions
 on: workflow_dispatch
-jobs: 
-  test:
+jobs:
+  Testing:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: echo "workflow done"
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Maven test
+        run: mvn test
+
+      - name: Checkstyle
+        run: mvn checkstyle:checkstyle
